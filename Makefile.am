@@ -9,7 +9,7 @@
 
 ACLOCAL_AMFLAGS = -I build-aux/m4 ${ACLOCAL_FLAGS}
 AM_CPPFLAGS = $(DEPS_CFLAGS)
-EXAMPLE_LIBS = -lboost_system -lboost_thread -lkafkaconnect
+EXAMPLE_LIBS = $(BOOST_SYSTEM_LIB) $(BOOST_THREAD_LIB) -lkafkaconnect
 
 #
 # Shared Library
@@ -46,13 +46,13 @@ check_PROGRAMS = tests/encoder_helper \
 TESTS = ${check_PROGRAMS}
 
 tests_encoder_helper_SOURCES = src/tests/encoder_helper_tests.cpp
-tests_encoder_helper_LDADD = $(DEPS_LIBS) $(EXAMPLE_LIBS) -lboost_unit_test_framework
+tests_encoder_helper_LDADD = $(DEPS_LIBS) $(EXAMPLE_LIBS) $(BOOST_UNIT_TEST_FRAMEWORK_LIB)
 
 tests_encoder_SOURCES = src/tests/encoder_tests.cpp
-tests_encoder_LDADD = $(DEPS_LIBS) $(EXAMPLE_LIBS) -lboost_unit_test_framework
+tests_encoder_LDADD = $(DEPS_LIBS) $(EXAMPLE_LIBS) $(BOOST_UNIT_TEST_FRAMEWORK_LIB)
 
 tests_producer_SOURCES = src/tests/producer_tests.cpp
-tests_producer_LDADD = $(DEPS_LIBS) $(EXAMPLE_LIBS) -lboost_unit_test_framework
+tests_producer_LDADD = $(DEPS_LIBS) $(EXAMPLE_LIBS) $(BOOST_UNIT_TEST_FRAMEWORK_LIB)
 
 tests_producer_error_SOURCES = src/tests/producer_error_tests.cpp
-tests_producer_error_LDADD = $(DEPS_LIBS) $(EXAMPLE_LIBS) -lboost_unit_test_framework
+tests_producer_error_LDADD = $(DEPS_LIBS) $(EXAMPLE_LIBS) $(BOOST_UNIT_TEST_FRAMEWORK_LIB)
